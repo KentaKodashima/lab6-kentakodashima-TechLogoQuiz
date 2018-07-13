@@ -13,6 +13,7 @@ import java.util.List;
 
 import kentakodashima.com.techlogoquiz.Common.Common;
 import kentakodashima.com.techlogoquiz.MainActivity;
+import kentakodashima.com.techlogoquiz.R;
 
 public class SuggestionGridAdapter extends BaseAdapter {
 
@@ -20,10 +21,14 @@ public class SuggestionGridAdapter extends BaseAdapter {
   private Context context;
   private MainActivity mainActivity;
 
+  private int TEXT_COLOR;
+
   public SuggestionGridAdapter(List<String> suggestionSource, Context context, MainActivity mainActivity) {
     this.suggestionSource = suggestionSource;
     this.context = context;
     this.mainActivity = mainActivity;
+
+    TEXT_COLOR = context.getResources().getColor(R.color.TEXT_COLOR);
   }
 
   @Override
@@ -51,11 +56,12 @@ public class SuggestionGridAdapter extends BaseAdapter {
         button.setPadding(8,8,8,8);
         button.setBackgroundColor(Color.DKGRAY);
       } else {
+
         button = new Button(context);
         button.setLayoutParams(new GridView.LayoutParams(85, 85));
         button.setPadding(8,8,8,8);
         button.setBackgroundColor(Color.DKGRAY);
-        button.setTextColor(Color.YELLOW);
+        button.setTextColor(TEXT_COLOR);
         button.setText(suggestionSource.get(position));
         button.setOnClickListener(new View.OnClickListener() {
           @Override
